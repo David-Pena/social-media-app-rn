@@ -32,7 +32,8 @@ export default function App() {
         </View>
 
         {/* Body */}
-        <Text></Text>
+        {post.description && <Text style={styles.description}>{post.description}</Text>}
+        {post.image && <Image source={{ uri: post.image }} style={styles.postImage} />}
 
         {/* Footer */}
         <View style={styles.footer}></View>
@@ -52,14 +53,17 @@ const styles = StyleSheet.create({
   },
   post: {
     width: "100%",
+    marginVertical: 10,
+    backgroundColor: "#fff",
   },
+
+  // Header
   header: {
     width: "100%",
     flexDirection: "row",
     alignItems: "center",
     padding: 10,
   },
-  footer: {},
   profileImage: {
     width: 40,
     height: 40,
@@ -75,4 +79,19 @@ const styles = StyleSheet.create({
   icon: {
     marginLeft: "auto",
   },
+
+  // Body
+  description: {
+    paddingHorizontal: 10,
+    lineHeight: 20,
+    letterSpacing: 0.3,
+  },
+  postImage: {
+    width: "100%",
+    aspectRatio: 1,
+    marginTop: 10,
+  },
+
+  // Footer
+  footer: {},
 });
