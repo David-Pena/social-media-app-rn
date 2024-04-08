@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Image } from "react-native";
-import { Entypo } from "@expo/vector-icons";
+import { StyleSheet, Text, View, Image, SafeAreaView } from "react-native";
+import { Entypo, AntDesign, FontAwesome5, MaterialCommunityIcons } from "@expo/vector-icons";
 
 const post = {
   id: "p1",
@@ -19,7 +19,7 @@ const post = {
 
 export default function App() {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View style={styles.post}>
         {/* Header */}
         <View style={styles.header}>
@@ -36,11 +36,31 @@ export default function App() {
         {post.image && <Image source={{ uri: post.image }} style={styles.postImage} />}
 
         {/* Footer */}
-        <View style={styles.footer}></View>
+        <View style={styles.footer}>
+          <View style={styles.statsRow}>
+            <Image source={require("./assets/images/like.png")} style={styles.likeIcon} />
+            <Text style={styles.likedBy}>Elon Musk and {post.numberOfLikes} others</Text>
+            <Text style={styles.shares}>{post.numberOfShares} shares</Text>
+          </View>
+          <View style={styles.buttonsRow}>
+            <View style={styles.iconButton}>
+              <AntDesign name="like2" size={18} color="gray" />
+              <Text style={styles.iconButtonText}>Like</Text>
+            </View>
+            <View style={styles.iconButton}>
+              <FontAwesome5 name="comment-alt" size={16} color="gray" />
+              <Text style={styles.iconButtonText}>Comment</Text>
+            </View>
+            <View style={styles.iconButton}>
+              <MaterialCommunityIcons name="share-outline" size={18} color="gray" />
+              <Text style={styles.iconButtonText}>Share</Text>
+            </View>
+          </View>
+        </View>
       </View>
 
       <StatusBar style="auto" />
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -48,8 +68,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
   },
   post: {
     width: "100%",
@@ -93,5 +111,41 @@ const styles = StyleSheet.create({
   },
 
   // Footer
-  footer: {},
+  footer: {
+    paddingHorizontal: 10,
+  },
+  statsRow: {
+    paddingVertical: 10,
+    flexDirection: "row",
+    alignItems: "center",
+
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: "lightgray",
+  },
+  likedBy: {
+    color: "gray",
+  },
+  shares: {
+    marginLeft: "auto",
+    color: "gray",
+  },
+  likeIcon: {
+    width: 20,
+    height: 20,
+    marginRight: 5,
+  },
+  buttonsRow: {
+    marginVertical: 10,
+    flexDirection: "row",
+    justifyContent: "space-around",
+  },
+  iconButton: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  iconButtonText: {
+    marginLeft: 5,
+    color: "gray",
+    fontWeight: "500",
+  },
 });
