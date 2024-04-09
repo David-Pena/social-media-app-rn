@@ -1,15 +1,56 @@
-import { StyleSheet, FlatList } from "react-native";
+import { StyleSheet, FlatList, Image, Text, Pressable } from "react-native";
 import React from "react";
 import FeedPost from "../../src/components/FeedPost";
 import { Post } from "../../src/interfaces/post";
 import posts from "../../assets/data/posts.json";
+import { Entypo } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
+
+const img = "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/user.png";
 
 const FeedScreen = () => {
+  const navigation = useNavigation();
+
+  const createPost = () => {
+    navigation.navigate("Create Post");
+  };
+
   return (
-    <FlatList data={posts as Post[]} renderItem={({ item }) => <FeedPost post={item} />} />
+    <FlatList
+      data={posts as Post[]}
+      renderItem={({ item }) => <FeedPost post={item} />}
+      ListHeaderComponent={() => (
+        <Pressable onPress={createPost} style={styles.header}>
+          <Image source={{ uri: img }} style={styles.profileImage} />
+          <Text style={styles.name}>What's on your mind?</Text>
+          <Entypo name="images" size={24} color="limegreen" style={styles.icon} />
+        </Pressable>
+      )}
+    />
   );
 };
 
 export default FeedScreen;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  header: {
+    padding: 10,
+    paddingVertical: 15,
+    flexDirection: "row",
+    alignItems: "center",
+    width: "100%",
+    backgroundColor: "#fff",
+  },
+  profileImage: {
+    width: 40,
+    height: 40,
+    borderRadius: 25,
+    marginRight: 10,
+  },
+  name: {
+    color: "gray",
+  },
+  icon: {
+    marginLeft: "auto",
+  },
+});
