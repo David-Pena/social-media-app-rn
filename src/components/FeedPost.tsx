@@ -1,30 +1,16 @@
 import { StyleSheet, Image, Text, View } from "react-native";
 import React from "react";
 import { Entypo, AntDesign, FontAwesome5, MaterialCommunityIcons } from "@expo/vector-icons";
+import { Post } from "../interfaces/post";
 
-const post = {
-  id: "p1",
-  createdAt: "4 m",
-  User: {
-    id: "u1",
-    image: "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/vadim.jpg",
-    name: "Vadim Savin",
-  },
-  description:
-    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-  image: "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/images/1.jpg",
-  numberOfLikes: 11,
-  numberOfShares: 2,
-};
-
-const FeedPost = () => {
+const FeedPost = ({ post }: { post: Post }) => {
   return (
     <View style={styles.post}>
       {/* Header */}
       <View style={styles.header}>
-        <Image source={{ uri: post.User.image }} style={styles.profileImage} />
+        <Image source={{ uri: post.user.image }} style={styles.profileImage} />
         <View>
-          <Text style={styles.name}>{post.User.name}</Text>
+          <Text style={styles.name}>{post.user.name}</Text>
           <Text style={styles.subtitle}>{post.createdAt}</Text>
         </View>
         <Entypo name="dots-three-horizontal" size={18} color="gray" style={styles.icon} />
