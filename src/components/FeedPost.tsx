@@ -1,20 +1,23 @@
-import { StyleSheet, Image, Text, View } from "react-native";
+import { Pressable, StyleSheet, Image, Text, View } from "react-native";
 import React from "react";
 import { Entypo, AntDesign, FontAwesome5, MaterialCommunityIcons } from "@expo/vector-icons";
 import { Post } from "../interfaces/post";
+import { useNavigation } from "@react-navigation/native";
 
 const FeedPost = ({ post }: { post: Post }) => {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.post}>
       {/* Header */}
-      <View style={styles.header}>
+      <Pressable onPress={() => navigation.navigate("Profile")} style={styles.header}>
         <Image source={{ uri: post.user.image }} style={styles.profileImage} />
         <View>
           <Text style={styles.name}>{post.user.name}</Text>
           <Text style={styles.subtitle}>{post.createdAt}</Text>
         </View>
         <Entypo name="dots-three-horizontal" size={18} color="gray" style={styles.icon} />
-      </View>
+      </Pressable>
 
       {/* Body */}
       {post.description && <Text style={styles.description}>{post.description}</Text>}

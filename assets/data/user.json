@@ -6,7 +6,7 @@
     {
       "id": "p1",
       "createdAt": "4 m",
-      "User": {
+      "user": {
         "id": "u1",
         "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/vadim.jpg",
         "name": "Vadim Savin"
@@ -19,7 +19,7 @@
     {
       "id": "p5",
       "createdAt": "1 d",
-      "User": {
+      "user": {
         "id": "u1",
         "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/vadim1.JPG",
         "name": "Vadim Savin"
@@ -32,7 +32,7 @@
     {
       "id": "p6",
       "createdAt": "1 d",
-      "User": {
+      "user": {
         "id": "u1",
         "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/vadim1.JPG",
         "name": "Vadim Savin"
